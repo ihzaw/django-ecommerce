@@ -55,7 +55,7 @@ def login_view(request):
             user = authenticate(request, email_address=email_address, password=password)
             if user is not None:
                 tokens = RefreshToken.for_user(user)
-                return JsonResponse({'email': user.email_address, 'refresh': str(tokens), 'access': str(tokens.access_token)}, status=status.HTTP_200_OK)
+                return JsonResponse({'id': user.id, 'full_name': user.full_name, 'email': user.email_address, 'refresh': str(tokens), 'access': str(tokens.access_token)}, status=status.HTTP_200_OK)
             else:
                 return JsonResponse({'detail': 'Invalid credentials'}, status=status.HTTP_401_UNAUTHORIZED)
         return JsonResponse(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -38,7 +38,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'rest_framework_simplejwt.token_blacklist',
-    'items'
+    'items',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'ecommerce_project.urls'
@@ -143,5 +145,18 @@ SIMPLE_JWT = {
 }
 
 AUTH_USER_MODEL = 'items.User'
+
+# Allow requests from all domains. You should restrict this in production.
+CORS_ALLOW_ALL_ORIGINS = True
+
+# You can also specify specific origins that are allowed to access your APIs
+# Example:
+# CORS_ALLOWED_ORIGINS = [
+#     "http://localhost:3000",
+#     "https://your-production-domain.com",
+# ]
+
+# CORS configuration
+CORS_ALLOW_CREDENTIALS = True  # Allows cookies to be included in cross-origin requests
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

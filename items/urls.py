@@ -14,7 +14,7 @@ urlpatterns = [
     path('products/<int:pk>/', ProductRetrieveUpdateDestroy.as_view(), name='product-detail'),
     path('orders/', OrderListCreate.as_view(), name='order-list-create'),
     path('orders/<int:pk>/', OrderRetrieveUpdateDestroy.as_view(), name='order-detail'),
+    path('register', RegisterView.as_view(), name='register'),
     path('login', views.login_view, name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
-    path('register', RegisterView.as_view(), name='register')
 ]
