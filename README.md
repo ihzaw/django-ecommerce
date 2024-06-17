@@ -1,6 +1,7 @@
 # Django E-Commerce Service
 
 Setup Instructions
+
 *Prerequisites*
 - Python 3.x installed (preferably Python 3.6+)
 - Pip (Python package installer)
@@ -40,6 +41,7 @@ python manage.py createsuperuser
 ```
 
 *Running the Application*
+
 6. **To start the Django development server:**
 ```
 python manage.py runserver
