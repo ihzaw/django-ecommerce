@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -80,14 +81,9 @@ WSGI_APPLICATION = 'ecommerce_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'koyebdb',
-        'USER': 'koyeb-adm',
-        'PASSWORD': 'BzMwN1RhV6UD',
-        'HOST': 'ep-spring-truth-a217b6vn.eu-central-1.pg.koyeb.app',
-        'OPTIONS': {'sslmode': 'require'},
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
 }
 
 
