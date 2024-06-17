@@ -12,7 +12,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import User, Product, Order
-from .serializers import UserSerializer, ProductSerializer, OrderSerializer, LoginSerializer, RegisterSerializer
+from .serializers import UserSerializer, ProductSerializer, OrderSerializer, LoginSerializer, RegisterSerializer, OrderWithoutUserSerializer
 
 
 class UserListCreate(generics.ListCreateAPIView):
@@ -38,6 +38,10 @@ class OrderListCreate(generics.ListCreateAPIView):
 class OrderRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+class OrderListWithoutUser(generics.ListAPIView):
+    queryset = Order.objects.all()
+    serializer_class = OrderWithoutUserSerializer
     
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = LoginSerializer

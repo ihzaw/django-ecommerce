@@ -14,12 +14,20 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class OrderSerializer(serializers.ModelSerializer):
-    user = UserSerializer()
-    product = ProductSerializer()
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+    product = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all())
 
     class Meta:
         model = Order
-        fields = '__all__'
+        fields = ['user', 'product', 'payment_method', 'total', 'created_at']
+        read_only_fields = ['created_at']
+
+class OrderWithoutUserSerializer(serializers.ModelSerializer):
+    product = ProductSerializer(read_only=True)
+
+    class Meta:
+        model = Order
+        fields = ['id', 'product', 'payment_method', 'total', 'created_at']
         
 class LoginSerializer(serializers.Serializer):
     username = serializers.EmailField()

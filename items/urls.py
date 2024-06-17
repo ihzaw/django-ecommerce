@@ -3,7 +3,7 @@ from .views import (
     UserListCreate, UserRetrieveUpdateDestroy,
     ProductListCreate, ProductRetrieveUpdateDestroy,
     OrderListCreate, OrderRetrieveUpdateDestroy, 
-    RegisterView, LogoutView
+    RegisterView, LogoutView, OrderListWithoutUser
 )
 from . import views
 
@@ -12,8 +12,9 @@ urlpatterns = [
     path('users/<int:pk>/', UserRetrieveUpdateDestroy.as_view(), name='user-detail'),
     path('products/', ProductListCreate.as_view(), name='product-list-create'),
     path('products/<int:pk>/', ProductRetrieveUpdateDestroy.as_view(), name='product-detail'),
-    path('orders/', OrderListCreate.as_view(), name='order-list-create'),
+    path('orders', OrderListCreate.as_view(), name='order-list-create'),
     path('orders/<int:pk>/', OrderRetrieveUpdateDestroy.as_view(), name='order-detail'),
+    path('orders-without-user/', OrderListWithoutUser.as_view(), name='order-list-without-user'),
     path('register', RegisterView.as_view(), name='register'),
     path('login', views.login_view, name='login'),
     path('logout', LogoutView.as_view(), name='logout'),
