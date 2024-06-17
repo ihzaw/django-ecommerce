@@ -10,7 +10,7 @@ Setup Instructions
 
 ```
 git clone <repository-url>
-cd <repository-name>
+cd django-ecommerce
 ```
 
 2. **Create a virtual environment (optional but recommended):**
